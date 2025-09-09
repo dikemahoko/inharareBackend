@@ -157,12 +157,13 @@ AUTHENTICATION_BACKENDS = [
 # -----------------------------
 # 📌 CORS CONFIG
 # -----------------------------
-CORS_ALLOWED_ORIGINS = config(
-    'CORS_ALLOWED_ORIGINS', 'https://app.uzinduziafrica.com'
-).split(',')
+CORS_ALLOWED_ORIGINS = [
+    "https://inharare.web.app",
+    "http://localhost:4200",
+]
 CORS_ALLOW_CREDENTIALS = True
 
-# -----------------------------
+# -----------------------------https://inhararebackend.onrender.com
 # 📌 COOKIE CONFIG
 # -----------------------------
 AUTH_COOKIE = 'access'
