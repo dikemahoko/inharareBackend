@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Environment & secrets
+# .env
+# *.env
+# .env.*
+!.env.example
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Virtual env
+venv/
+env/
+.venv/
+ENV/
+
+# Migrations (optional if you don’t want to commit them)
+# Uncomment if you don’t want migrations in git
+# */migrations/
+# !*/migrations/__init__.py

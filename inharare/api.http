@@ -1,0 +1,95 @@
+GET   http://127.0.0.1:8000/api/users/me/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2MzIwNjMwLCJpYXQiOjE3NTYzMjAzMzAsImp0aSI6ImNhMjlkZjNkZjUzOTRhMTY4YTc0ZDI3N2VmMjNlZWNhIiwidXNlcl9pZCI6MX0.-e7hbZQ8ETDfx5CGv_ylJwDURm2jQYCPmmE3OajLkPg
+###
+POST   http://127.0.0.1:8000/auth/token/login/  HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"test"
+}
+
+###
+POST   http://127.0.0.1:8000/auth/token/logout/  HTTP/1.1
+Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2MTYyNDc3LCJpYXQiOjE3NTYxNjIxNzgsImp0aSI6ImJlZTY4Y2JiMjVmODRjNTNhYzU5NjBmYzk4ZmFhOTAzIiwidXNlcl9pZCI6IjEifQ.MVVj9P7tMRGGuEQA4WKTDjSkDQwcvv_YHcB3JrIKj-g
+
+###
+POST   http://127.0.0.1:8000/auth/jwt/refresh/  HTTP/1.1
+Content-Type: application/json
+
+{
+   "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NjI0OTA1NSwiaWF0IjoxNzU2MTYyNjU1LCJqdGkiOiI3MjYxNjJkZmVmOWU0NzdjYmNmMWY4ZGNlMzI4YzcyYSIsInVzZXJfaWQiOiIxIn0.fuqCm6vWj7N6or6JpInjEwb8DD3CTH9L_tUmAIslwSU"
+}
+// login
+###
+POST   http://127.0.0.1:8000/api/jwt/create/  HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "mahokodike@gmail.com" ,
+  "password":   "password123@"
+  }
+  // User registration  /users/activation/ 
+  //http://localhost/activation/MQ/cv7nz1-bd001bdfed8fc565813c0ec7df77774b
+
+###
+POST   http://127.0.0.1:8000/api/users/activation/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "uid":"MQ",
+
+"token":"cv7nz1-bd001bdfed8fc565813c0ec7df77774b"
+}
+
+###
+POST   http://127.0.0.1:8000/api/users/  HTTP/1.1
+Content-Type: application/json
+
+{
+  "first_name":"dike",
+  "last_name": "MaHoko",
+  "email":"mahokodike@gmail.com",
+  "password": "pz42uN2BBV@",
+  "re_password":"pz42uN2BBV@"
+}
+
+###
+GET    http://127.0.0.1:8000/api/cars/  HTTP/1.1
+Content-Type: application/json
+
+
+###
+GET    http://127.0.0.1:8000/api/latest-Cars/  HTTP/1.1
+Content-Type: application/json
+
+###
+POST     http://127.0.0.1:8000/api/cars/  HTTP/1.1
+Content-Type: application/json
+
+///users/reset_password/
+###
+POST     http://127.0.0.1:8000/api/users/reset_password/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2MzIwNjMwLCJpYXQiOjE3NTYzMjAzMzAsImp0aSI6ImNhMjlkZjNkZjUzOTRhMTY4YTc0ZDI3N2VmMjNlZWNhIiwidXNlcl9pZCI6MX0.-e7hbZQ8ETDfx5CGv_ylJwDURm2jQYCPmmE3OajLkPg
+
+
+{
+    "email":"mahokodike@gmail.com"
+}
+
+###
+POST     http://127.0.0.1:8000/api/users/reset_password_confirm/  HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2MzIwNjMwLCJpYXQiOjE3NTYzMjAzMzAsImp0aSI6ImNhMjlkZjNkZjUzOTRhMTY4YTc0ZDI3N2VmMjNlZWNhIiwidXNlcl9pZCI6MX0.-e7hbZQ8ETDfx5CGv_ylJwDURm2jQYCPmmE3OajLkPg
+
+{
+  "uid":"MQ",
+"token":"cv7plf-e407b639df6ecccfe4338d947dad1549",
+"new_password":"password123@",
+"re_new_password":"password123@"
+
+}
+
+
+//password-reset/MQ/cv7plf-e407b639df6ecccfe4338d947dad1549
