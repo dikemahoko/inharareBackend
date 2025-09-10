@@ -204,7 +204,7 @@ PESEPAY_RESULT_URL = config('PESEPAY_RESULT_URL')
 # 📌 APP DOMAIN
 # -----------------------------
 DOMAIN = config('DOMAIN')
-SITE_NAME = 'Uzinduzi Africa'
+SITE_NAME = 'inharare cars'
 
 # -----------------------------
 # 📌 DEFAULT PK FIELD
