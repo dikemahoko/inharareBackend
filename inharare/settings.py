@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 # -----------------------------
 # 📌 PATHS & CORE CONFIG
@@ -83,30 +84,13 @@ TEMPLATES = [
 
 # -----------------------------
 # 📌 DATABASE CONFIG
-# -----------------------------
-DB_ENGINE = config('ENGINE').strip()
-DB_NAME = config('NAME')
-DB_USER = config('USER')
-DB_PASSWORD = config('PASSWORD')
-DB_HOST = config('HOST')
-DB_PORT = config('PORT')
-
-print(f"🔥 ENGINE SET TO: '{DB_ENGINE}'")
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': DB_ENGINE,
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        }
+        'default': dj_database_url.config(
+            default='postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a/inhararare',  # Use DATABASE_URL environment variable
+            conn_max_age=600  # Optional: set connection max age
+        )
     }
-}
+# post
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
