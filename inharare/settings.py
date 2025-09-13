@@ -88,8 +88,10 @@ DATABASES = {
         'default': dj_database_url.config(
             default='postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a/inhararare',  # Use DATABASE_URL environment variable
             conn_max_age=600  # Optional: set connection max age
+            #  internallink: postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a/inhararare
+            #externallink: postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a.oregon-postgres.render.com/inhararare
         )
-    }
+     }  
 # post
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -144,6 +146,7 @@ AUTHENTICATION_BACKENDS = [
 CORS_ALLOWED_ORIGINS = [
     "https://inharare.web.app",
     "http://localhost:4200",
+    "https://inhararebackend.onrender.com",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
