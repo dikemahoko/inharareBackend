@@ -149,6 +149,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://inhararebackend.onrender.com",
 ]
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    'https://inhararebackend.onrender.com',
+    'https://inharare.web.app',
+       "http://localhost:4200",  
+]
+
 
 # -----------------------------https://inhararebackend.onrender.com
 # 📌 COOKIE CONFIG
