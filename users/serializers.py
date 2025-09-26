@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import UserAccount
 from djoser.serializers import UserSerializer as BaseUserSerializer
-from .models import UserAccount
 
 class UserAccountUpdateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,12 +13,12 @@ class UserAccountUpdateSerializer(serializers.ModelSerializer):
         ]
 
     def validate(self, data):
-        # Ensure artist fields are validated only for artists
-        if self.instance.is_agent:
-            if 'company_name' in data and not data['company_name']:
-                raise serializers.ValidationError("Stage name cannot be empty.")
-            if 'category' in data and not data['category']:
-                raise serializers.ValidationError("category cannot be empty.")
+        # Ensure agent fields are validated only for agents
+        if self.instance and self.instance.is_agent:
+            if 'company_name' in data and not data.get('company_name'):
+                raise serializers.ValidationError("Company name cannot be empty for an agent.")
+            if 'category' in data and not data.get('category'):
+                raise serializers.ValidationError("Category cannot be empty for an agent.")
         return data
 
 class CustomUserSerializer(BaseUserSerializer):
@@ -27,8 +26,9 @@ class CustomUserSerializer(BaseUserSerializer):
 
     class Meta(BaseUserSerializer.Meta):
         model = UserAccount
-        fields ='__all__'
+        fields = '__all__' # Using all fields from the model
         read_only_fields = ('id', 'is_superuser', 'is_staff', 'is_agent', 'is_dealer', 'date_joined')
+    
     def get_role(self, obj):
         if obj.is_superuser:
             return 'admin'
@@ -37,3 +37,4 @@ class CustomUserSerializer(BaseUserSerializer):
         elif obj.is_dealer:
             return 'dealer'
         return 'individual'
+

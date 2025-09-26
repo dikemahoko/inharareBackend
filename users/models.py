@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 
 from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
-
+from django.utils import timezone
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
@@ -70,9 +70,11 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     cover_photo = models.ImageField(upload_to='cover_photos/', null=True, blank=True)
 
-    # Artist-specific fields
+    # dealer-specific fields
     company_name = models.CharField(max_length=255, null=True, blank=True)
-    
+      # --- ADDED: Fields for dealer ratings and reviews ---
+    rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=4.5)
+    reviews = models.PositiveIntegerField(default=0, null=True, blank=True)
 
     category = models.CharField(max_length=255, blank=True, null=True)
     is_dealer = models.BooleanField(default=False)
@@ -82,7 +84,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     
     is_superuser = models.BooleanField(default=False)
-
+    date_joined = models.DateTimeField(default=timezone.now) # <-- ADD THIS LINE
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'

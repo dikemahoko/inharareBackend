@@ -75,15 +75,19 @@ class Category(models.Model):
 
 
 class Car(models.Model):
+    CONDITION_CHOICES = [
+        ('New', 'New'),
+        ('Used', 'Used'),
+    ]
     agent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='Cars')
-    title = models.CharField(max_length=255)
+   # title = models.CharField(max_length=255)
     release_date = models.DateField()
     Category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
     maker = models.ForeignKey(Maker, on_delete=models.SET_NULL, null=True)
     model = models.ForeignKey(ModelName, on_delete=models.SET_NULL, null=True)
     fuel_type = models.ForeignKey(FuelType, on_delete=models.SET_NULL, null=True)
-
+    car_type = models.ForeignKey(CarType, on_delete=models.SET_NULL, null=True, blank=True)
 
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -93,6 +97,8 @@ class Car(models.Model):
     transmission = models.CharField(max_length=50, choices=[('manual', 'Manual'), ('automatic', 'Automatic')])
     color = models.CharField(max_length=50, blank=True, null=True)
     published = models.BooleanField(default=False) 
+    sold = models.BooleanField(default=False)
+    condition = models.CharField(max_length=10, choices=CONDITION_CHOICES, default='Used')
 
     province = models.ForeignKey(Province, on_delete=models.SET_NULL, null=True)
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)

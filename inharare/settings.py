@@ -42,6 +42,7 @@ INSTALLED_APPS = [
      # Third-party
     'djoser',
     'rest_framework',
+    'django_filters',
     'corsheaders',
     'storages',
     'social_django',
@@ -86,7 +87,7 @@ TEMPLATES = [
 # 📌 DATABASE CONFIG
 DATABASES = {
         'default': dj_database_url.config(
-            default='postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a/inhararare',  # Use DATABASE_URL environment variable
+            default='postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a.oregon-postgres.render.com/inhararare',  # Use DATABASE_URL environment variable
             conn_max_age=600  # Optional: set connection max age
             #  internallink: postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a/inhararare
             #externallink: postgresql://inhararare:gqwO5gxcDQKX7ksPzt2wdznd2SG8PaRK@dpg-d30eupnfte5s73eb2ko0-a.oregon-postgres.render.com/inhararare
@@ -212,10 +213,13 @@ PESEPAY_RESULT_URL = config('PESEPAY_RESULT_URL')
 # -----------------------------
 # 📌 APP DOMAIN
 # -----------------------------
-DOMAIN = config('DOMAIN')
+DOMAIN = 'inharare.web.app'
 SITE_NAME = 'inharare cars'
 
 # -----------------------------
 # 📌 DEFAULT PK FIELD
 # -----------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

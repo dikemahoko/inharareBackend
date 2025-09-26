@@ -7,6 +7,8 @@ from djoser.social.views import ProviderAuthView
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView, TokenVerifyView)
 from rest_framework import generics, permissions
 from .serializers import UserAccountUpdateSerializer
+from .models import UserAccount
+from .serializers import CustomUserSerializer
 
 
 class CustomProviderAuthView(ProviderAuthView):
@@ -118,3 +120,10 @@ class LogoutView(APIView):
         return response
 
 
+class FeaturedDealersView(generics.ListAPIView):
+    """
+    Provides a list of the 8 most recently joined, active, featured dealers.
+    """
+    queryset = UserAccount.objects.filter(is_dealer=True, is_active=True).order_by('-date_joined')[:8]
+    serializer_class = CustomUserSerializer
+    permission_classes = [permissions.AllowAny]

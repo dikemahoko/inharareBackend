@@ -6,6 +6,7 @@ from .views import (
     CustomTokenVerifyView,
     LogoutView,UserAccountUpdateView,
     UserAccountUpdateView,
+    FeaturedDealersView
 )
 
 urlpatterns = [
@@ -14,12 +15,13 @@ urlpatterns = [
         CustomProviderAuthView.as_view(),
         name='provider-auth'
     ),
-    path('profile/edit/', UserAccountUpdateView.as_view(), name='edit-profile'),
+   # path('profile/edit/', UserAccountUpdateView.as_view(), name='edit-profile'),
     path('update-profile/', UserAccountUpdateView.as_view(), name='update-profile'),
     path('jwt/create/', CustomTokenObtainPairView.as_view()),
     path('jwt/refresh/', CustomTokenRefreshView.as_view()),
     path('jwt/verify/', CustomTokenVerifyView.as_view()),
     path('logout/', LogoutView.as_view()),
+      path('dealers/featured/', FeaturedDealersView.as_view(), name='featured-dealers'),
 ]
 
 
